@@ -1,0 +1,158 @@
+[
+  {
+    "resume": "resume - 1.pdf",
+    "job_description": "sample_jd_1.pdf",
+    "tfidf_score": 12.357641324928728,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 34.818403508589725,
+    "soft_match_score": 100.0,
+    "llm_score": 67.40927497466492,
+    "final_score": 64.15014389583537,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 9,
+    "processing_time": 0.033177852630615234
+  },
+  {
+    "resume": "resume - 1.pdf",
+    "job_description": "sample_jd_2.pdf",
+    "tfidf_score": 15.893568042173037,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 35.879181523763016,
+    "soft_match_score": 100.0,
+    "llm_score": 68.48226720381638,
+    "final_score": 64.89635277065013,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 9,
+    "processing_time": 0.030515193939208984
+  },
+  {
+    "resume": "Resume - 10.pdf",
+    "job_description": "sample_jd_1.pdf",
+    "tfidf_score": 5.841772132436601,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 32.86364275084209,
+    "soft_match_score": 100.0,
+    "llm_score": 63.03698761694793,
+    "final_score": 62.05655338542121,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 5,
+    "processing_time": 0.03395724296569824
+  },
+  {
+    "resume": "Resume - 10.pdf",
+    "job_description": "sample_jd_2.pdf",
+    "tfidf_score": 9.231672861039062,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 33.88061296942283,
+    "soft_match_score": 100.0,
+    "llm_score": 69.09492860088169,
+    "final_score": 64.28072376803364,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 5,
+    "processing_time": 0.019399642944335938
+  },
+  {
+    "resume": "RESUME - 2.pdf",
+    "job_description": "sample_jd_1.pdf",
+    "tfidf_score": 11.904468147840994,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 34.6824515554634,
+    "soft_match_score": 100.0,
+    "llm_score": 79.17455249395486,
+    "final_score": 67.62534637037182,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 10,
+    "processing_time": 0.04114890098571777
+  },
+  {
+    "resume": "RESUME - 2.pdf",
+    "job_description": "sample_jd_2.pdf",
+    "tfidf_score": 14.68231306019855,
+    "fuzzy_score": 44.44444444444444,
+    "hard_match_score": 35.51580502917067,
+    "soft_match_score": 100.0,
+    "llm_score": 64.16467301369653,
+    "final_score": 63.45572391577723,
+    "verdict": "Medium",
+    "matched_skills": [
+      "python",
+      "react",
+      "sql",
+      "docker"
+    ],
+    "missing_skills": [
+      "javascript",
+      "aws",
+      "machine learning",
+      "kubernetes",
+      "microservices"
+    ],
+    "skills_found": 10,
+    "processing_time": 0.03575253486633301
+  }
+]
