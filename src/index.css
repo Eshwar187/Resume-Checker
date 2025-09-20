@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium iOS-inspired design system with glassmorphism effects */
+
+@layer base {
+  :root {
+    /* Base colors - Light mode */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 16%;
+
+    /* Glass morphism backgrounds */
+    --glass: 210 20% 98% / 0.8;
+    --glass-border: 210 20% 88% / 0.3;
+    
+    /* Premium gradient colors */
+    --primary: 238 75% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 245 60% 75%;
+    
+    /* Secondary iOS blue */
+    --secondary: 211 100% 96%;
+    --secondary-foreground: 238 75% 65%;
+    
+    /* Premium accent colors */
+    --accent: 250 100% 98%;
+    --accent-foreground: 238 75% 65%;
+    
+    /* Muted backgrounds */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 20% 45%;
+    
+    /* Card with glassmorphism */
+    --card: 210 20% 98% / 0.7;
+    --card-foreground: 215 25% 16%;
+    
+    /* Interactive elements */
+    --popover: 210 20% 100%;
+    --popover-foreground: 215 25% 16%;
+    
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    
+    /* Form elements */
+    --border: 210 20% 88%;
+    --input: 210 20% 98% / 0.8;
+    --ring: 238 75% 65%;
+    
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(238 75% 65%) 0%, hsl(245 60% 75%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 70% 96%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(238 75% 65%) 0%, hsl(245 60% 75%) 50%, hsl(220 70% 85%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(210 20% 98% / 0.8) 0%, hsl(210 20% 95% / 0.6) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(215 25% 16% / 0.05);
+    --shadow-md: 0 4px 16px hsl(215 25% 16% / 0.08);
+    --shadow-lg: 0 8px 32px hsl(215 25% 16% / 0.12);
+    --shadow-glass: 0 8px 32px hsl(238 75% 65% / 0.15);
+    
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Base colors - Dark mode */
+    --background: 215 30% 6%;
+    --foreground: 210 20% 95%;
+
+    /* Glass morphism backgrounds - Dark */
+    --glass: 215 30% 8% / 0.8;
+    --glass-border: 215 30% 20% / 0.3;
+    
+    /* Primary remains vibrant in dark */
+    --primary: 238 75% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 245 60% 75%;
+    
+    /* Secondary dark */
+    --secondary: 215 30% 12%;
+    --secondary-foreground: 238 75% 75%;
+    
+    /* Premium accent colors - Dark */
+    --accent: 215 30% 10%;
+    --accent-foreground: 238 75% 75%;
+    
+    /* Muted backgrounds - Dark */
+    --muted: 215 30% 10%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Card with glassmorphism - Dark */
+    --card: 215 30% 8% / 0.7;
+    --card-foreground: 210 20% 95%;
+    
+    /* Interactive elements - Dark */
+    --popover: 215 30% 8%;
+    --popover-foreground: 210 20% 95%;
+    
+    /* Status colors - Dark */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 95% 55%;
+    --warning-foreground: 0 0% 98%;
+    
+    /* Form elements - Dark */
+    --border: 215 30% 18%;
+    --input: 215 30% 8% / 0.8;
+    --ring: 238 75% 65%;
+    
+    /* Premium gradients - Dark */
+    --gradient-primary: linear-gradient(135deg, hsl(238 75% 65%) 0%, hsl(245 60% 75%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(215 30% 12%) 0%, hsl(215 30% 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(238 75% 65%) 0%, hsl(245 60% 75%) 50%, hsl(215 30% 20%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(215 30% 8% / 0.8) 0%, hsl(215 30% 6% / 0.6) 100%);
+    
+    /* Shadows - Dark */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 16px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 8px 32px hsl(0 0% 0% / 0.5);
+    --shadow-glass: 0 8px 32px hsl(238 75% 65% / 0.25);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-secondary);
+    min-height: 100vh;
+  }
+  
+  /* Glassmorphism utility classes */
+  .glass {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  .glass-subtle {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+@layer components {
+  /* Premium button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-8 py-4 rounded-2xl font-semibold text-lg;
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .btn-glass {
+    @apply glass text-foreground px-6 py-3 rounded-xl font-medium;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-glass:hover {
+    background: hsl(var(--muted));
+    transform: translateY(-1px);
+  }
+  
+  /* Premium card styles */
+  .card-premium {
+    @apply glass rounded-2xl p-6;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-premium:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  
+  /* Premium input styles */
+  .input-premium {
+    @apply glass rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground border-0;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .input-premium:focus {
+    outline: none;
+    box-shadow: var(--shadow-glass);
+    background: hsl(var(--background));
+  }
+}
