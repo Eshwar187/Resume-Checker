@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend API Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .response {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.online {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status.offline {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Backend API Tester</h1>
+    
+    <!-- Server Status -->
+    <div class="container">
+        <h2>Server Status</h2>
+        <button onclick="checkHealth()">Check Health</button>
+        <div id="serverStatus"></div>
+    </div>
+
+    <!-- Authentication Testing -->
+    <div class="container">
+        <h2>🔐 Authentication Testing</h2>
+        
+        <h3>Register New User</h3>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" id="regName" value="John Doe" />
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="regEmail" value="john@example.com" />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="regPassword" value="password123" />
+        </div>
+        <button onclick="testRegister()">Register</button>
+        <div id="registerResult"></div>
+
+        <h3>Login User</h3>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="loginEmail" value="test@example.com" />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="loginPassword" value="password123" />
+        </div>
+        <button onclick="testLogin()">Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <!-- AI Suggestions Testing -->
+    <div class="container">
+        <h2>🧠 AI Suggestions Testing</h2>
+        <div class="form-group">
+            <label>Resume Text:</label>
+            <textarea id="resumeText" rows="8">John Doe
+Software Engineer
+
+EXPERIENCE
+Software Developer at Tech Corp (2022-2024)
+- Developed web applications using React and Node.js
+- Collaborated with cross-functional teams to deliver high-quality software
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology (2018-2022)
+
+SKILLS
+- Programming: JavaScript, Python, Java
+- Web Technologies: HTML, CSS, React, Node.js
+- Databases: MySQL, MongoDB</textarea>
+        </div>
+        <div class="form-group">
+            <label>Target Role (optional):</label>
+            <input type="text" id="targetRole" value="Software Engineer" />
+        </div>
+        <button onclick="testAISuggestions()">Get AI Suggestions</button>
+        <div id="aiResult"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8001';
+
+        async function makeRequest(endpoint, options = {}) {
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                const data = await response.json();
+                return { success: response.ok, data, status: response.status };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function checkHealth() {
+            const statusDiv = document.getElementById('serverStatus');
+            statusDiv.innerHTML = 'Checking server status...';
+            
+            const result = await makeRequest('/health');
+            
+            if (result.success) {
+                statusDiv.innerHTML = `
+                    <div class="status online">
+                        ✅ Server is online and healthy!
+                        <div class="response">${JSON.stringify(result.data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="status offline">
+                        ❌ Server is offline or not responding
+                        <div class="response">${result.error || 'Connection failed'}</div>
+                    </div>
+                `;
+            }
+        }
+
+        async function testRegister() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const resultDiv = document.getElementById('registerResult');
+            
+            resultDiv.innerHTML = 'Registering user...';
+            
+            const result = await makeRequest('/api/v1/auth/register', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, password })
+            });
+            
+            if (result.success) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✅ Registration successful!
+                        <div class="response">${JSON.stringify(result.data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Registration failed
+                        <div class="response">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                    </div>
+                `;
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const resultDiv = document.getElementById('loginResult');
+            
+            resultDiv.innerHTML = 'Logging in...';
+            
+            const result = await makeRequest('/api/v1/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ email, password })
+            });
+            
+            if (result.success) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✅ Login successful!
+                        <div class="response">${JSON.stringify(result.data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Login failed
+                        <div class="response">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                    </div>
+                `;
+            }
+        }
+
+        async function testAISuggestions() {
+            const resumeText = document.getElementById('resumeText').value;
+            const targetRole = document.getElementById('targetRole').value;
+            const resultDiv = document.getElementById('aiResult');
+            
+            resultDiv.innerHTML = 'Generating AI suggestions...';
+            
+            const result = await makeRequest('/api/v1/ai-suggestions', {
+                method: 'POST',
+                body: JSON.stringify({ 
+                    resume_text: resumeText, 
+                    target_role: targetRole || undefined 
+                })
+            });
+            
+            if (result.success) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✅ AI suggestions generated successfully!
+                        <div class="response">${JSON.stringify(result.data, null, 2)}</div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ AI suggestions failed
+                        <div class="response">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Check server status on page load
+        window.onload = function() {
+            checkHealth();
+        };
+    </script>
+</body>
+</html>
