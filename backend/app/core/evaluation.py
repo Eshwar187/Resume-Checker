@@ -1,8 +1,3 @@
-"""
-Production AI evaluation engine using LangChain + LangGraph for resume relevance checking.
-Real implementation without mocks - production ready.
-"""
-
 import json
 import logging
 import time

@@ -1,7 +1,3 @@
-"""
-Main FastAPI application entry point.
-"""
-
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware

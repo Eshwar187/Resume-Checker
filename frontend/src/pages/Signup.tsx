@@ -44,16 +44,12 @@ const Signup = () => {
     try {
       const response = await apiClient.register(formData.email, formData.password, formData.fullName);
       
-      if (response.status === 'success' && response.data) {
-        // Store the token
-        apiClient.setToken(response.data.access_token);
-        
-        setSuccess('Account created successfully! Redirecting...');
-        
-        // Redirect to dashboard after a short delay
+      if (response.status === 'success') {
+        setSuccess('Account created! Please sign in to continue.');
+        // Redirect to login after short delay
         setTimeout(() => {
-          navigate('/dashboard');
-        }, 1500);
+          navigate('/login');
+        }, 1200);
       } else {
         setError(response.message || 'Registration failed');
       }
@@ -231,7 +227,14 @@ const Signup = () => {
             {/* Submit Button */}
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={
+                isLoading || 
+                !formData.agreeToTerms || 
+                !formData.fullName.trim() || 
+                !formData.email.trim() || 
+                !formData.password.trim() || 
+                !formData.confirmPassword.trim()
+              }
               className="w-full btn-hero group"
             >
               {isLoading ? (

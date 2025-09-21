@@ -16,8 +16,8 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    email: "test@example.com", // Pre-filled for demo
-    password: "password123", // Pre-filled for demo
+    email: "",
+    password: "",
     rememberMe: false,
   });
 
@@ -102,14 +102,7 @@ const Login = () => {
               </Alert>
             )}
 
-            {/* Demo Credentials Info */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <p className="text-sm text-blue-800">
-                <strong>Demo Credentials:</strong><br />
-                Email: test@example.com<br />
-                Password: password123
-              </p>
-            </div>
+            {/* Demo credentials removed for production */}
             {/* Email Field */}
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm font-medium text-foreground">
@@ -180,7 +173,11 @@ const Login = () => {
             {/* Submit Button */}
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={
+                isLoading ||
+                !formData.email.trim() ||
+                !formData.password.trim()
+              }
               className="w-full btn-hero group"
             >
               {isLoading ? (

@@ -1,7 +1,3 @@
-"""
-API tests for the Resume Relevance Check System.
-"""
-
 import pytest
 import asyncio
 from fastapi.testclient import TestClient

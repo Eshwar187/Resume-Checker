@@ -1,7 +1,3 @@
-"""
-Job Description upload and management API endpoints.
-"""
-
 from fastapi import APIRouter, HTTPException, status, Depends, UploadFile, File, Form
 from typing import List, Optional
 import uuid

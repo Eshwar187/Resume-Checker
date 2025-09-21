@@ -1,7 +1,3 @@
-"""
-Supabase client configuration and utilities.
-"""
-
 from supabase import create_client, Client
 from supabase.client import ClientOptions
 from app.config import settings
@@ -11,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class SupabaseClient:
-    """Supabase client wrapper with connection management."""
+   
     
     def __init__(self):
         self._client: Client = None

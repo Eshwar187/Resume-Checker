@@ -1,7 +1,3 @@
-"""
-Dashboard API endpoints for students and placement teams.
-"""
-
 from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List, Dict, Any, Optional
 import logging

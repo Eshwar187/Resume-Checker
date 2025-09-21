@@ -1,7 +1,3 @@
-"""
-File processing utilities for resume and job description parsing.
-"""
-
 import io
 import re
 import logging

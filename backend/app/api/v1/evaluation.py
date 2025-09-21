@@ -1,7 +1,3 @@
-"""
-Evaluation API endpoints for resume relevance checking.
-"""
-
 from fastapi import APIRouter, HTTPException, status, Depends, BackgroundTasks
 from typing import List, Optional
 import uuid

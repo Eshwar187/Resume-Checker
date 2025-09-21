@@ -1,7 +1,3 @@
-"""
-Authentication utilities and JWT handling.
-"""
-
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
 import jwt

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, FileText, User, LogOut } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
@@ -8,7 +8,12 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const isLoggedIn = false; // This will be connected to Supabase auth later
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    setIsLoggedIn(!!token);
+  }, [location.pathname]);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -56,7 +61,7 @@ export const Navbar = () => {
                   <User className="w-4 h-4 mr-2" />
                   Profile
                 </Button>
-                <Button variant="ghost" size="sm" className="btn-glass">
+                <Button variant="ghost" size="sm" className="btn-glass" onClick={() => { localStorage.removeItem('auth_token'); setIsLoggedIn(false); window.location.href = '/login'; }}>
                   <LogOut className="w-4 h-4 mr-2" />
                   Logout
                 </Button>

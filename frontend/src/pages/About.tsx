@@ -7,12 +7,12 @@ const About = () => {
   const teamMembers = [
     {
       name: "Dishu Mahajan",
-      role: "Full Stack Developer & AI Integration",
+      role: "Full Stack Developer & AI Integration Expert",
       description: "Led the development of AI-powered resume analysis algorithms and full-stack architecture. Specialized in machine learning integration and backend optimization.",
       skills: ["React", "Node.js", "Python", "AI/ML", "System Architecture"],
-      github: "https://github.com/dishuma", // Placeholder - update with actual
-      linkedin: "https://linkedin.com/in/dishuma", // Placeholder - update with actual
-      email: "dishu.mahajan@example.com", // Placeholder - update with actual
+      github: "https://github.com/DiStrix1", // Placeholder - update with actual
+      linkedin: "https://www.linkedin.com/in/dishu-mahajan/", // Placeholder - update with actual
+      email: "", // Placeholder - update with actual
       avatar: "D",
       color: "from-blue-500 to-purple-600"
     },
@@ -21,20 +21,20 @@ const About = () => {
       role: "Backend Developer & Database Architect",
       description: "Designed and implemented the robust database architecture and backend APIs. Focused on performance optimization and scalable data management solutions.",
       skills: ["Node.js", "PostgreSQL", "API Design", "Cloud Architecture", "DevOps"],
-      github: "https://github.com/siddarthpnair", // Placeholder - update with actual
-      linkedin: "https://linkedin.com/in/siddarthpnair", // Placeholder - update with actual
-      email: "siddarth.nair@example.com", // Placeholder - update with actual
+      github: "https://github.com/Si-cyber-ai", // Placeholder - update with actual
+      linkedin: "http://www.linkedin.com/in/sidharth-p-nair", // Placeholder - update with actual
+      email: "sidharth277a@gmail.com", // Placeholder - update with actual
       avatar: "S",
       color: "from-green-500 to-teal-600"
     },
     {
       name: "Eshwar J",
-      role: "Frontend Developer & UI/UX Designer",
+      role: "Full Stack Developer & AI Integration Expert",
       description: "Crafted the premium iOS-inspired user interface with glassmorphism effects. Specialized in responsive design and smooth user experience optimization.",
       skills: ["React", "TypeScript", "Tailwind CSS", "UI/UX Design", "Framer Motion"],
-      github: "https://github.com/eshwarj", // Placeholder - update with actual
-      linkedin: "https://linkedin.com/in/eshwarj", // Placeholder - update with actual
-      email: "eshwar.j@example.com", // Placeholder - update with actual
+      github: "https://github.com/Eshwar187", // Placeholder - update with actual
+      linkedin: "https://www.linkedin.com/in/j-eshwar-7b8854289/", // Placeholder - update with actual
+      email: "jeshwar.work@gmail.com", // Placeholder - update with actual
       avatar: "E",
       color: "from-purple-500 to-pink-600"
     }

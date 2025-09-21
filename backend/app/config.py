@@ -1,8 +1,3 @@
-"""
-Core configuration module for the Resume Relevance Check System.
-Handles environment variables and application settings.
-"""
-
 from pydantic_settings import BaseSettings
 from typing import List, Optional
 import os

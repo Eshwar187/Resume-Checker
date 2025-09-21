@@ -1,7 +1,3 @@
-"""
-Authentication API endpoints.
-"""
-
 from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.security import HTTPAuthorizationCredentials
 import logging

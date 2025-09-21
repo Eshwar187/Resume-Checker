@@ -1,7 +1,3 @@
-"""
-Database models for the Resume Relevance Check System.
-"""
-
 from sqlalchemy import Column, Integer, String, Text, DateTime, Float, Boolean, ForeignKey, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship

@@ -1,7 +1,3 @@
-"""
-Database initialization and migration utilities.
-"""
-
 import asyncio
 import logging
 from typing import Dict, Any
