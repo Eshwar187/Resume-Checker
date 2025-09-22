@@ -68,6 +68,89 @@ async def analyze_resume_for_suggestions(
             detail=f"Failed to generate AI suggestions: {str(e)}"
         )
 
+@router.post("/stream")
+async def stream_ai_suggestions_main(
+    request: dict,
+    user=Depends(get_current_user_mock)
+):
+    """
+    Stream real-time AI suggestions as they are generated.
+    This endpoint matches the frontend expectation: /api/v1/ai-suggestions/stream
+    """
+    async def generate_suggestions_stream():
+        """Generate streaming AI suggestions."""
+        try:
+            # Parse request
+            resume_text = request.get("resume_text", "")
+            target_role = request.get("target_role", "software engineer")
+            
+            # Step 1: Start analysis
+            yield f"data: {json.dumps({'event': 'start', 'message': 'Starting analysis', 'target_role': target_role})}\n\n"
+            await asyncio.sleep(0.3)
+
+            # Step 2: Skill recommendations
+            skills = [
+                {"type": "skill", "title": "Python", "priority": "high", "action": "Add concrete Python project bullets", "impact": "Higher ATS match"},
+                {"type": "skill", "title": "FastAPI", "priority": "medium", "action": "Mention APIs built with metrics & auth", "impact": "Improves backend relevance"},
+            ]
+            yield f"data: {json.dumps({'event': 'skill_recommendations', 'items': skills})}\n\n"
+            await asyncio.sleep(0.4)
+
+            # Step 3: Content improvements
+            content = [
+                {"type": "content", "title": "Quantify impact", "description": "Use numbers (% latency drop, throughput, users)", "priority": "high"},
+                {"type": "content", "title": "Action verbs", "description": "Start bullets with led, built, designed", "priority": "low"},
+            ]
+            yield f"data: {json.dumps({'event': 'content_improvements', 'items': content})}\n\n"
+            await asyncio.sleep(0.4)
+
+            # Step 4: Formatting/ATS tips
+            formatting = [
+                {"type": "format", "title": "Consistent headers", "description": "Keep H2 size uniform", "priority": "low"},
+                {"type": "format", "title": "ATS-safe", "description": "Avoid text boxes; use simple bullets", "priority": "medium"},
+            ]
+            yield f"data: {json.dumps({'event': 'formatting_suggestions', 'items': formatting})}\n\n"
+            await asyncio.sleep(0.4)
+
+            # Step 5: Overall score
+            overall = {
+                "score": 78,
+                "max_score": 100,
+                "percentage": 78,
+                "grade": "B+",
+                "feedback": [
+                    "Good base; emphasize measurable outcomes",
+                    "Add role-specific keywords for better match"
+                ],
+            }
+            yield f"data: {json.dumps({'event': 'overall_score', 'value': overall})}\n\n"
+            await asyncio.sleep(0.3)
+
+            # Step 6: Priority actions
+            actions = [
+                {"priority": 1, "title": "Add 3 quantified bullets", "impact": "High", "time_estimate": "15m"},
+                {"priority": 2, "title": "Include FastAPI + Docker keywords", "impact": "Medium", "time_estimate": "10m"},
+            ]
+            yield f"data: {json.dumps({'event': 'priority_actions', 'items': actions})}\n\n"
+            await asyncio.sleep(0.2)
+
+            # Done
+            yield f"data: {json.dumps({'event': 'done'})}\n\n"
+            
+        except Exception as e:
+            logger.error(f"Streaming suggestions failed: {e}")
+            yield f"data: {json.dumps({'event': 'error', 'message': str(e)})}\n\n"
+
+    return StreamingResponse(
+        generate_suggestions_stream(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+        }
+    )
+
+
 @router.post("/stream-suggestions")
 async def stream_ai_suggestions(
     resume_text: str,

@@ -59,12 +59,24 @@ class Settings(BaseSettings):
     @property
     def allowed_origins(self) -> List[str]:
         """Get allowed origins."""
-        return [
+        origins = [
             "http://localhost:3000",
             "http://localhost:5173",
             "http://127.0.0.1:3000",
             "http://127.0.0.1:5173"
         ]
+        
+        # Add production frontend URLs
+        if self.environment == "production":
+            origins.extend([
+                "https://*.vercel.app",
+                "https://*.netlify.app",
+                "https://*.render.com",
+                # Add your specific frontend domain here
+                # "https://your-frontend-domain.com"
+            ])
+        
+        return origins
     
     @property
     def cors_origins(self) -> List[str]:
